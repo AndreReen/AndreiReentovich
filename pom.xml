@@ -16,6 +16,7 @@
         <testng.suite.file/>
         <testng.version>7.4.0</testng.version>
         <calculator.version>6.9.9</calculator.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
     </properties>
 
     <dependencies>
@@ -35,7 +36,15 @@
             <type>jar</type>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
     </dependencies>
+
+
 
     <build>
         <plugins>
@@ -95,6 +104,14 @@
             <id>allTests</id>
             <properties>
                 <testng.suite.file>${testng.configs.path}/allTests.xml</testng.suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>hwTwo</id>
+
+            <properties>
+                <testng.suite.file>target/test-classes/testconfigs/hwTwoAllTest.xml</testng.suite.file>
             </properties>
         </profile>
     </profiles>
