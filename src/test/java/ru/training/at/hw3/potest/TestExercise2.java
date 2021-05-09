@@ -4,29 +4,29 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import ru.training.at.hw3.pages.DifferentElementsPage;
 import ru.training.at.hw3.pages.MainPage;
+import ru.training.at.hw3.testdata.TestData;
 
 public class TestExercise2 extends BaseTest {
 
     SoftAssert assertS = new SoftAssert();
+
 
     @Test
     public void exerciseTwo() {
         MainPage mainPage = new MainPage(webDriver);
         DifferentElementsPage differentElementsPage = new DifferentElementsPage(webDriver);
 
-        //System.out.println(webDriver);
-
         //1. Open test site by URL
         mainPage.openPage();
 
         //2. Assert Brower title
-        assertS.assertEquals(mainPage.getTitle(), "Home Page");
+        assertS.assertEquals(mainPage.getTitle(), TestData.HOME_PAGE_TITLE);
 
         //3. Perform login
-        mainPage.login("Roman", "Jdi1234");
+        mainPage.login(TestData.LOGIN, TestData.PASSWORD);
 
         // 4. Assert User name in the right-top side of screen that user is logged in
-        assertS.assertEquals(mainPage.loggedUser(), "ROMAN IOVLEV");
+        assertS.assertEquals(mainPage.loggedUser(), TestData.EXPECTED_USER_NAME);
 
         //5. Open through the header menu Service -> Different Elements Page
         mainPage.headerMenuItem(2).click();
@@ -43,20 +43,27 @@ public class TestExercise2 extends BaseTest {
         assertS.assertTrue(differentElementsPage.getRadioButton(3).isSelected());
 
         //8. Select in dropdown
-        differentElementsPage.colorDropDown("Yellow");
+        differentElementsPage.colorDropDown(TestData.YELLOW);
 
-       //9. Assert that
-       // for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        assertS.assertTrue(differentElementsPage.searchLog("Wind: condition changed to true").isDisplayed());
-        assertS.assertTrue(differentElementsPage.searchLog("Water: condition changed to true").isDisplayed());
+        //9. Assert that
+        // for each checkbox there is an individual log row
+        // and value is corresponded to the status of checkbox.
+        assertS.assertTrue(differentElementsPage
+                .searchLog(TestData.WIND_CHBOX_TO_TRUE).isDisplayed());
+        assertS.assertTrue(differentElementsPage
+                .searchLog(TestData.WATER_CHBOX_TO_TRUE).isDisplayed());
 
-        // Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton.
-        assertS.assertTrue(differentElementsPage.searchLog("metal: value changed to  Selen").isDisplayed());
+        // Assert that for radiobutton there is a log row
+        // and value is corresponded to the status of radiobutton.
+        assertS.assertTrue(differentElementsPage
+                .searchLog(TestData.METAL_RADIO_TO_SELEN).isDisplayed());
 
-        // Assert that for dropdown there is a log row and value is corresponded to the selected value.
-        assertS.assertTrue(differentElementsPage.searchLog("Colors: value changed to Yellow").isDisplayed());
+        // Assert that for dropdown there is a log row
+        // and value is corresponded to the selected value.
+        assertS.assertTrue(differentElementsPage
+                .searchLog(TestData.COLORS_MENU_TO_YELLOW).isDisplayed());
 
-        //10. Close Browser *DEPRECATED*
+        //10. Close Browser *DEPRECATED* managed by BaseTest class
         assertS.assertAll();
     }
 }

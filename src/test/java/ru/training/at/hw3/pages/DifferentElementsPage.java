@@ -32,7 +32,7 @@ public class DifferentElementsPage {
 
 
     public void openPage() {
-        webDriver.get("https://jdi-testing.github.io/jdi-light/index.html");
+        webDriver.get("https://jdi-testing.github.io/jdi-light/different-elements.html");
     }
 
     public String getTitle() {

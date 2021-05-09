@@ -10,17 +10,25 @@ public class BaseTest {
 
     public WebDriver webDriver;
 
-    @BeforeMethod
+    @BeforeClass
     public void prepareToTest() {
         //Using our singleton for setup
         webDriver = DriverManager.setupDriver();
+        System.out.println(webDriver);
         webDriver.manage().window().maximize();
+        webDriver.manage().deleteAllCookies();
     }
 
-    @AfterMethod
+    @AfterClass
+    public void resetBetweenTests() {
+        webDriver.manage().deleteAllCookies();
+        webDriver.navigate().refresh();
+    }
+
+    @AfterSuite
     public void tearDownDriver() {
         if (webDriver != null) {
-            webDriver.close();
+            webDriver.quit();
         }
     }
 }

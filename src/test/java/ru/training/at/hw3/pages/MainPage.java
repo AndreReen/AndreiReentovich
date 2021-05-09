@@ -79,6 +79,7 @@ public class MainPage {
     public String headerMenuItemText(int itemNumber) {
         return header.get(itemNumber).getText();
     }
+
     public WebElement headerMenuItem(int itemNumber) {
         return header.get(itemNumber);
     }
