@@ -122,11 +122,18 @@
 
         <profile>
             <id>hwTwo</id>
-
             <properties>
                 <testng.suite.file>target/test-classes/testconfigs/hwTwoAllTest.xml</testng.suite.file>
             </properties>
         </profile>
+
+        <profile>
+            <id>hwThree</id>
+            <properties>
+                <testng.suite.file>target/test-classes/testconfigs/hwThreeAllTest.xml</testng.suite.file>
+            </properties>
+        </profile>
+
     </profiles>
 </project>
 

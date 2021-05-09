@@ -14,7 +14,7 @@ import java.util.List;
 public class Exercise1 {
 
     @Test
-    public void exerciseTest() {
+    public void exerciseTestOne() {
         WebDriver webDriver;
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         webDriver = new ChromeDriver();

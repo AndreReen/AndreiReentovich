@@ -1,21 +1,17 @@
 package ru.training.at.hw3.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 import ru.training.at.hw3.driverutils.WaitActions;
 
-import javax.inject.Inject;
 import java.util.List;
 
 public class MainPage {
-    private WaitActions waitActions;
+
     private WebDriver webDriver;
-    SoftAssert assertS = new SoftAssert();
+    private WaitActions waitActions;
 
     @FindBy(xpath = "//input[@name='q']")
     private WebElement searchInput;
@@ -37,21 +33,32 @@ public class MainPage {
     private List<WebElement> images;
     @FindBy(xpath = "//span[contains(@class, 'benefit-txt')]")
     private List<WebElement> texts;
+    @FindBy(id = "frame")
+    private WebElement frame;
+    @FindBy(id = "frame-button")
+    private WebElement frameButton;
+    @FindBy(name = "navigation-sidebar")
+    private WebElement leftNavMenu;
+    @FindBy(xpath = "//*[@class='sidebar-menu left']/li")
+    private List<WebElement> leftNavMenuItem;
+    @FindBy(linkText = "DIFFERENT ELEMENTS")
+    private WebElement differentElementsItem;
 
-    @Inject
-    public void SearchPage(WebDriver webDriver) {
+
+
+    public MainPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
         waitActions = new WaitActions(webDriver);
     }
 
-    public void openTestPage() {
+
+    public void openPage() {
         webDriver.get("https://jdi-testing.github.io/jdi-light/index.html");
     }
 
-    public void verifyTitle(String expectedTitle) {
-        String actualTitle = webDriver.getTitle();
-        Assert.assertEquals(actualTitle, expectedTitle);
+    public String getTitle() {
+        return  webDriver.getTitle();
     }
 
     public void login(String loginP, String passwordP) {
@@ -61,17 +68,19 @@ public class MainPage {
         loginButton.click();
     }
 
-    public void loggedUser(String expectedUser) {
-        String actualUser = userName.getText();
-        assertS.assertEquals(actualUser, expectedUser);
+    public String loggedUser() {
+        return userName.getText();
     }
 
     public int headerMenuSize() {
         return header.size();
     }
 
-    public String headerMenuItem(int itemNumber) {
+    public String headerMenuItemText(int itemNumber) {
         return header.get(itemNumber).getText();
+    }
+    public WebElement headerMenuItem(int itemNumber) {
+        return header.get(itemNumber);
     }
 
     public int imageCount() {
@@ -81,11 +90,28 @@ public class MainPage {
     public int textCount() {
         return texts.size();
     }
+
     public String textGet(int textNum) {
         return texts.get(textNum).getText();
     }
 
+    public WebElement frameItem() {
+        return frame;
+    }
 
+    public WebElement frameButtonItem() {
+        return frameButton;
+    }
 
+    public int leftNavMenuSize() {
+        return leftNavMenuItem.size();
+    }
 
+    public String leftNavMenuItems(int itemNumber) {
+        return leftNavMenuItem.get(itemNumber).getText();
+    }
+
+    public WebElement getDifferentElementsMenuItem() {
+        return differentElementsItem;
+    }
 }

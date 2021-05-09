@@ -1,33 +1,26 @@
 package ru.training.at.hw3.potest;
 
-import com.google.inject.Guice;
-import com.google.inject.Inject;
-import com.google.inject.Injector;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import ru.training.at.hw3.driverutils.GuiceDriverManager;
 
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.*;
+import ru.training.at.hw3.driverutils.DriverManager;
+
 
 public class BaseTest {
 
-    private final Injector injector = Guice.createInjector(new GuiceDriverManager());
-
-    @Inject
     public WebDriver webDriver;
 
-    @BeforeClass
+    @BeforeMethod
     public void prepareToTest() {
-        injector.injectMembers(this);
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Using our singleton for setup
+        webDriver = DriverManager.setupDriver();
+        webDriver.manage().window().maximize();
     }
 
-/*    @AfterClass
+    @AfterMethod
     public void tearDownDriver() {
         if (webDriver != null) {
-            webDriver.quit();
+            webDriver.close();
         }
-    }*/
-
+    }
 }
