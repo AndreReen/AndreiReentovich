@@ -51,10 +51,8 @@ public class Exercise1 {
         assertS.assertEquals(headerMenuItems.get(3).getText(), "METALS & COLORS");
 
         //6. Assert that there are 4 images on the Index Page and they are displayed
-        assertS.assertTrue(webDriver.findElement(By.xpath("//span[@class='icons-benefit icon-practise']")).isDisplayed());
-        assertS.assertTrue(webDriver.findElement(By.xpath("//span[@class='icons-benefit icon-custom']")).isDisplayed());
-        assertS.assertTrue(webDriver.findElement(By.xpath("//span[@class='icons-benefit icon-multi']")).isDisplayed());
-        assertS.assertTrue(webDriver.findElement(By.xpath("//span[@class='icons-benefit icon-base']")).isDisplayed());
+        List<WebElement> benefitIcons = webDriver.findElements(By.cssSelector(".icons-benefit"));
+        assertS.assertEquals(benefitIcons.size(), 4);
 
         //7. Assert that there are 4 texts on the Index Page under icons and they have proper text
         String benefitPractise = "To include good practices\n" + "and ideas from successful\n" + "EPAM project";
@@ -62,10 +60,12 @@ public class Exercise1 {
         String benefitMulti = "To be multiplatform";
         String benefitBase = "Already have good base\n" + "(about 20 internal and\n" + "some external projects),\n" + "wish to get more…";
 
-        assertS.assertEquals(webDriver.findElement(By.xpath("//span[text()='To include good practices']")).getText(), benefitPractise);
-        assertS.assertEquals(webDriver.findElement(By.xpath("//span[text()='To be flexible and']")).getText(), benefitCustom);
-        assertS.assertEquals(webDriver.findElement(By.xpath("//span[text()='To be multiplatform ']")).getText(), benefitMulti);
-        assertS.assertEquals(webDriver.findElement(By.xpath("//span[text()='Already have good base']")).getText(), benefitBase);
+        List<WebElement> benefitTexts = webDriver.findElements(By.cssSelector(".benefit-txt"));
+        assertS.assertEquals(benefitTexts.size(), 4);
+        assertS.assertEquals(benefitTexts.get(0).getText(), benefitPractise);
+        assertS.assertEquals(benefitTexts.get(1).getText(), benefitCustom);
+        assertS.assertEquals(benefitTexts.get(2).getText(), benefitMulti);
+        assertS.assertEquals(benefitTexts.get(3).getText(), benefitBase);
 
 
         //8. Assert that there is the iframe with “Frame Button” exist
