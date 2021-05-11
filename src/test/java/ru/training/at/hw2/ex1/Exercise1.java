@@ -43,14 +43,12 @@ public class Exercise1 {
         assertS.assertEquals(actualUser, expectedUser);
 
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        assertS.assertTrue(webDriver.findElement(By.xpath("//header//li[1]")).isDisplayed());
-        assertS.assertEquals(webDriver.findElement(By.xpath("//header//li[1]")).getText(), "HOME");
-        assertS.assertTrue(webDriver.findElement(By.xpath("//header//li[2]")).isDisplayed());
-        assertS.assertEquals(webDriver.findElement(By.xpath("//header//li[2]")).getText(), "CONTACT FORM");
-        assertS.assertTrue(webDriver.findElement(By.xpath("//header//li[3]")).isDisplayed());
-        assertS.assertEquals(webDriver.findElement(By.xpath("//header//li[3]")).getText(), "SERVICE");
-        assertS.assertTrue(webDriver.findElement(By.xpath("//header//nav/ul/li[4]")).isDisplayed());
-        assertS.assertEquals(webDriver.findElement(By.xpath("//header//nav/ul/li[4]")).getText(), "METALS & COLORS");
+        List<WebElement> headerMenuItems = webDriver.findElements(By.cssSelector(".uui-navigation.nav > li"));
+        assertS.assertEquals(headerMenuItems.size(), 4);
+        assertS.assertEquals(headerMenuItems.get(0).getText(), "HOME");
+        assertS.assertEquals(headerMenuItems.get(1).getText(), "CONTACT FORM");
+        assertS.assertEquals(headerMenuItems.get(2).getText(), "SERVICE");
+        assertS.assertEquals(headerMenuItems.get(3).getText(), "METALS & COLORS");
 
         //6. Assert that there are 4 images on the Index Page and they are displayed
         assertS.assertTrue(webDriver.findElement(By.xpath("//span[@class='icons-benefit icon-practise']")).isDisplayed());
