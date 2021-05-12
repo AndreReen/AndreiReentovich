@@ -13,13 +13,13 @@ public class DifferentElementsPage {
 
     private WebDriver webDriver;
 
-    @FindBy(xpath = "//input[@type='checkbox']")
+    @FindBy(css = ".label-checkbox > input")
     private List<WebElement> checkBoxes;
-    @FindBy(xpath = "//input[@type='radio']")
+    @FindBy(css = ".label-radio > input")
     private List<WebElement> radioButtons;
-    @FindBy(xpath = "//select")
+    @FindBy(css = ".colors > select")
     private WebElement dropDownMenu;
-    @FindBy(xpath = "//*[@class='panel-body-list logs']/li")
+    @FindBy(css = ".panel-body-list.logs > li")
     private List<WebElement> log;
 
 
@@ -27,7 +27,6 @@ public class DifferentElementsPage {
     public DifferentElementsPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
-        // waitActions = new WaitActions(webDriver);
     }
 
 

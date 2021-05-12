@@ -13,10 +13,6 @@ public class MainPage {
     private WebDriver webDriver;
     private WaitActions waitActions;
 
-    @FindBy(xpath = "//input[@name='q']")
-    private WebElement searchInput;
-    @FindBy(xpath = "//li[@class='sbct']")
-    private List<WebElement> suggestionList;
     @FindBy(id = "user-icon")
     private WebElement userLogin;
     @FindBy(id = "name")
@@ -27,11 +23,11 @@ public class MainPage {
     private WebElement loginButton;
     @FindBy(id = "user-name")
     private WebElement userName;
-    @FindBy(css = "ul.uui-navigation.nav.navbar-nav.m-l8 > li")
+    @FindBy(css = ".uui-navigation.nav > li")
     private List<WebElement> header;
-    @FindBy(xpath = "//span[contains(@class, 'icons-benefit')]")
+    @FindBy(css = ".icons-benefit")
     private List<WebElement> images;
-    @FindBy(xpath = "//span[contains(@class, 'benefit-txt')]")
+    @FindBy(css = ".benefit-txt")
     private List<WebElement> texts;
     @FindBy(id = "frame")
     private WebElement frame;
@@ -39,7 +35,7 @@ public class MainPage {
     private WebElement frameButton;
     @FindBy(name = "navigation-sidebar")
     private WebElement leftNavMenu;
-    @FindBy(xpath = "//*[@class='sidebar-menu left']/li")
+    @FindBy(css = ".sidebar-menu.left > li")
     private List<WebElement> leftNavMenuItem;
     @FindBy(linkText = "DIFFERENT ELEMENTS")
     private WebElement differentElementsItem;
