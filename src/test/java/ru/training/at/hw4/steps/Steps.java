@@ -15,8 +15,6 @@ import java.util.Properties;
 public class Steps extends BaseStep {
     MainPage mainPage;
     SoftAssert assertS;
-    public String login = "";
-    public String password = "";
 
     //constructor
     public Steps(WebDriver webDriver) {
@@ -35,6 +33,11 @@ public class Steps extends BaseStep {
 
     @Step("Perform login")
     public void loggingIN() {
+        mainPage.login(getUserLogin(), getUserPassword());
+    }
+
+    @Step("Fetching login from properties")
+    public String getUserLogin() {
         String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         String testDataPath = rootPath + "testData.properties";
 
@@ -44,10 +47,23 @@ public class Steps extends BaseStep {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String login = testProps.getProperty("login");
+        return login;
+    }
 
-        login = testProps.getProperty("login");
-        password = testProps.getProperty("password");
-        mainPage.login(login, password);
+    @Step("Fetching password from properties")
+    public String getUserPassword() {
+        String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        String testDataPath = rootPath + "testData.properties";
+
+        Properties testProps = new Properties();
+        try {
+            testProps.load(new FileInputStream(testDataPath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String password = testProps.getProperty("password");
+        return password;
     }
 
     @Step("Assert logged user name")
