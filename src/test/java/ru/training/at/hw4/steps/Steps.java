@@ -7,7 +7,6 @@ import org.testng.asserts.SoftAssert;
 import ru.training.at.hw4.driverutils.DriverManager;
 import ru.training.at.hw4.pages.MainPage;
 import ru.training.at.hw4.testdata.TestData;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -32,12 +31,12 @@ public class Steps extends BaseStep {
     }
 
     @Step("Perform login")
-    public void loggingIN() {
+    public void loggingIn() {
         mainPage.login(getUserLogin(), getUserPassword());
     }
 
     @Step("Fetching login from properties")
-    public String getUserLogin() {
+    public String getUserLogin() throws NullPointerException {
         String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         String testDataPath = rootPath + "testData.properties";
 
@@ -47,12 +46,11 @@ public class Steps extends BaseStep {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String login = testProps.getProperty("login");
-        return login;
+        return testProps.getProperty("login");
     }
 
     @Step("Fetching password from properties")
-    public String getUserPassword() {
+    public String getUserPassword() throws NullPointerException {
         String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         String testDataPath = rootPath + "testData.properties";
 
@@ -62,8 +60,7 @@ public class Steps extends BaseStep {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String password = testProps.getProperty("password");
-        return password;
+        return testProps.getProperty("password");
     }
 
     @Step("Assert logged user name")
@@ -95,7 +92,7 @@ public class Steps extends BaseStep {
     }
 
     @Step("Assert iframe")
-    public void assertIFrame() {
+    public void assertIframe() {
         Assert.assertTrue(mainPage.frameItem().isDisplayed());
     }
 
