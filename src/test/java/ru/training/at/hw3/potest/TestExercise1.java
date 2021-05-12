@@ -1,14 +1,10 @@
 package ru.training.at.hw3.potest;
 
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import ru.training.at.hw3.pages.MainPage;
 import ru.training.at.hw3.testdata.TestData;
 
 public class TestExercise1 extends BaseTest {
-
-    SoftAssert assertS = new SoftAssert();
-
 
     @Test
     public void exerciseOne() {
@@ -21,7 +17,7 @@ public class TestExercise1 extends BaseTest {
         assertS.assertEquals(mainPage.getTitle(), TestData.HOME_PAGE_TITLE);
 
         //3. Perform login
-        mainPage.login(TestData.LOGIN, TestData.PASSWORD);
+        mainPage.login(login, password);
 
         // 4. Assert User name in the right-top side of screen that user is logged in
         assertS.assertEquals(mainPage.loggedUser(), TestData.EXPECTED_USER_NAME);

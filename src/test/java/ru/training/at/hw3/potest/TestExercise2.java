@@ -1,15 +1,11 @@
 package ru.training.at.hw3.potest;
 
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import ru.training.at.hw3.pages.DifferentElementsPage;
 import ru.training.at.hw3.pages.MainPage;
 import ru.training.at.hw3.testdata.TestData;
 
 public class TestExercise2 extends BaseTest {
-
-    SoftAssert assertS = new SoftAssert();
-
 
     @Test
     public void exerciseTwo() {
