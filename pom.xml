@@ -17,6 +17,10 @@
         <testng.version>7.4.0</testng.version>
         <calculator.version>6.9.9</calculator.version>
         <selenium-java.version>3.141.59</selenium-java.version>
+        <webdrivermanager.version>4.4.1</webdrivermanager.version>
+        <allure-testng.version>2.13.9</allure-testng.version>
+        <aspectjweaver.version>1.9.6</aspectjweaver.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     </properties>
 
     <dependencies>
@@ -30,7 +34,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>4.4.1</version>
+            <version>${webdrivermanager.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -49,15 +53,15 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>org.sonatype.sisu</groupId>
-            <artifactId>sisu-guice</artifactId>
-            <version>2.1.7</version>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
-
-
 
     <build>
         <plugins>
@@ -82,22 +86,59 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+
+<!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
                     <suiteXmlFiles>${testng.suite.file}</suiteXmlFiles>
                 </configuration>
+            </plugin>-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <suiteXmlFiles>${testng.suite.file}</suiteXmlFiles>
+                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar"</argLine>
+                    <systemProperties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>${project.build.directory}/allure-results</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectjweaver.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
         </plugins>
     </build>
 
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>${allure-testng.version}</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <profiles>
         <profile>
-            <id>addAndSub</id>
+            <id>HW1addAndSub</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -107,30 +148,37 @@
         </profile>
 
         <profile>
-            <id>multAndDiv</id>
+            <id>HW1multAndDiv</id>
             <properties>
                 <testng.suite.file>${testng.configs.path}/multAndDiv.xml</testng.suite.file>
             </properties>
         </profile>
 
         <profile>
-            <id>allTests</id>
+            <id>HW1allTests</id>
             <properties>
                 <testng.suite.file>${testng.configs.path}/allTests.xml</testng.suite.file>
             </properties>
         </profile>
 
         <profile>
-            <id>hwTwo</id>
+            <id>HW2</id>
             <properties>
                 <testng.suite.file>target/test-classes/testconfigs/hwTwoAllTest.xml</testng.suite.file>
             </properties>
         </profile>
 
         <profile>
-            <id>hwThree</id>
+            <id>HW3</id>
             <properties>
                 <testng.suite.file>target/test-classes/testconfigs/hwThreeAllTest.xml</testng.suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>HW4</id>
+            <properties>
+                <testng.suite.file>target/test-classes/testconfigs/hw4All.xml</testng.suite.file>
             </properties>
         </profile>
 
