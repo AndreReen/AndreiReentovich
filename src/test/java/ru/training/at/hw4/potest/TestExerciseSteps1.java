@@ -9,7 +9,7 @@ import ru.training.at.hw4.testdata.TestData;
 
 @Feature("Implementing Exercise1")
 @Story("testing MainPage elements")
-public class TestExerciseSTEPS1 extends BaseTest {
+public class TestExerciseSteps1 extends BaseTest {
 
     MainPage mainPage;
 

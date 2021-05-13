@@ -2,7 +2,8 @@
 <suite name="allTestsSuite">
     <test name="allTests">
         <classes>
-            <class name="ru.training.at.hw4.potest.TestExerciseSTEPS1"/>
+            <class name="ru.training.at.hw4.potest.TestExerciseSteps1"/>
+            <class name="ru.training.at.hw4.potest.TestExerciseSteps2"/>
         </classes>
     </test>
 </suite>

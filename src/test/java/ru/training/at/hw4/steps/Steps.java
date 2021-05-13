@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import ru.training.at.hw4.driverutils.DriverManager;
+import ru.training.at.hw4.pages.DifferentElementsPage;
 import ru.training.at.hw4.pages.MainPage;
 import ru.training.at.hw4.testdata.TestData;
 import java.io.FileInputStream;
@@ -13,11 +14,13 @@ import java.util.Properties;
 
 public class Steps extends BaseStep {
     MainPage mainPage;
+    DifferentElementsPage differentElementsPage;
     SoftAssert assertS;
 
     //constructor
     public Steps(WebDriver webDriver) {
-        mainPage = new MainPage(DriverManager.driver);
+        mainPage = new MainPage(webDriver);
+        differentElementsPage = new DifferentElementsPage(webDriver);
     }
 
     @Step("Open web page")
@@ -120,5 +123,33 @@ public class Steps extends BaseStep {
         }
     }
 
+    @Step("Open Different Elements Page through Service")
+    public void goToDifElem() {
+        mainPage.headerMenuItem(2).click();
+        mainPage.getDifferentElementsMenuItem().click();
+    }
+
+    @Step("Select checkbox")
+    public void selectCheckbox(int checkboxNumber) {
+        differentElementsPage.getCheckBox(checkboxNumber).click();
+        Assert.assertTrue(differentElementsPage.getCheckBox(checkboxNumber).isSelected());
+    }
+
+    @Step("Select radiobutton")
+    public void selectRadioButton(int radioButtonNumber) {
+        differentElementsPage.getRadioButton(radioButtonNumber).click();
+        Assert.assertTrue(differentElementsPage.getRadioButton(radioButtonNumber).isSelected());
+    }
+
+    @Step("Select from dropdown menu")
+    public void selectDropdown(String color) {
+        differentElementsPage.colorDropDown(color);
+    }
+    
+    @Step("Check log ")
+    public void checkLog(String logEntry) {
+        Assert.assertTrue(differentElementsPage
+                .searchLog(logEntry).isDisplayed());
+    }
 }
 
