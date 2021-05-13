@@ -12,7 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Steps extends BaseStep {
+public class Steps {
     MainPage mainPage;
     DifferentElementsPage differentElementsPage;
     SoftAssert assertS;

@@ -22,15 +22,11 @@ public class BaseTest {
 
     @BeforeClass
     public void prepareToTest() {
-        //Using our singleton for driver setup
         webDriver = DriverManager.setupDriver();
         System.out.println(webDriver);
         webDriver.manage().window().maximize();
         webDriver.manage().deleteAllCookies();
-
         assertS = new SoftAssert();
-
-
 
         // loading credetials from properties file
         String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
