@@ -11,8 +11,6 @@ import ru.training.at.hw4.testdata.TestData;
 @Story("testing MainPage elements")
 public class TestExerciseSteps1 extends BaseTest {
 
-    MainPage mainPage;
-
     @Test
     public void exerciseOne() {
         Steps steps = new Steps(webDriver);

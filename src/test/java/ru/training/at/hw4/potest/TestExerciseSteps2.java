@@ -1,11 +1,15 @@
 package ru.training.at.hw4.potest;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import ru.training.at.hw4.pages.DifferentElementsPage;
 import ru.training.at.hw4.pages.MainPage;
 import ru.training.at.hw4.steps.Steps;
 import ru.training.at.hw4.testdata.TestData;
 
+@Feature("Implementing Exercise2")
+@Story("testing DifferentElementsPage elements")
 public class TestExerciseSteps2 extends BaseTest {
 
     @Test

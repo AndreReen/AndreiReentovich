@@ -17,7 +17,6 @@ public class Steps extends BaseStep {
     DifferentElementsPage differentElementsPage;
     SoftAssert assertS;
 
-    //constructor
     public Steps(WebDriver webDriver) {
         mainPage = new MainPage(webDriver);
         differentElementsPage = new DifferentElementsPage(webDriver);
@@ -145,7 +144,7 @@ public class Steps extends BaseStep {
     public void selectDropdown(String color) {
         differentElementsPage.colorDropDown(color);
     }
-    
+
     @Step("Check log ")
     public void checkLog(String logEntry) {
         Assert.assertTrue(differentElementsPage
