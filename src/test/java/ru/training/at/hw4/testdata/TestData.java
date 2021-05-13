@@ -16,7 +16,7 @@ public enum TestData {
             + "and ideas from successful\n" + "EPAM project";
     public static final String BENEFIT_TEXT_3 = "To be multiplatform";
     public static final String BENEFIT_TEXT_4 = "Already have good base\n"
-            + "(about 20 internal and\n" + "some external projects),\n" + "wish to get more…";
+            + "(about 20 internal and\n" + "some external projects),\n" + "wish to get more" + '\u2026';
     public static final int EXPECTED_HEADER_SIZE = 4;
     public static final int EXPECTED_IMAGE_COUNT = 4;
     public static final int EXPECTED_TEXT_COUNT = 4;
