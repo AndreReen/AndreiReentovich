@@ -1,4 +1,4 @@
-package ru.training.at.hw6;
+package ru.training.at.hw6.tests;
 
 import com.epam.jdi.light.driver.WebDriverUtils;
 import com.epam.jdi.light.elements.init.PageFactory;
@@ -12,28 +12,28 @@ import static java.lang.String.format;
 
 public class JdiSiteTest {
 
-    public static final int EXPECTED_BENEFITS_COUNT = 4;
 
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite() {
         PageFactory.initSite(JdiSite.class);
+
     }
 
     @AfterSuite(alwaysRun = true)
     public void afterSuite() {
-        WebDriverUtils.killAllSeleniumDrivers();
+        //WebDriverUtils.killAllSeleniumDrivers();
     }
 
     @Test
     public void jdiHomepageBenefitsTest() {
         /*
-         * 1. open home page
-         * 2. check benefits count
+         *Login on JDI site as User
+            Open Metals & Colors page by Header menu
+            Fill form Metals & Colors by data below:
+            Submit form Metals & Colors
+            Result sections should contains data  below:
+
          */
-        JdiSite.open();
-        int actualCount = JdiSite.jdiHomePage.getBenefitsCount();
-        Assert.assertEquals(actualCount, EXPECTED_BENEFITS_COUNT,
-                format("Expected benefits: %s, but actual: %s",
-                        EXPECTED_BENEFITS_COUNT, actualCount));
+
     }
 }

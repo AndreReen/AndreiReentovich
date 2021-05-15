@@ -205,7 +205,7 @@
         <profile>
             <id>HW6</id>
             <properties>
-                <testng.suite.file>target/test-classes/testconfigs/hw5All.xml</testng.suite.file>
+                <testng.suite.file>target/test-classes/testconfigs/hw6All.xml</testng.suite.file>
             </properties>
         </profile>
     </profiles>
