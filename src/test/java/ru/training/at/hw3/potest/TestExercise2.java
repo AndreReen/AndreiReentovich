@@ -1,28 +1,27 @@
 package ru.training.at.hw3.potest;
 
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import ru.training.at.hw3.pages.DifferentElementsPage;
-import ru.training.at.hw3.pages.MainPage;
-import ru.training.at.hw3.testdata.TestData;
 
 public class TestExercise2 extends BaseTest {
 
     @Test
-    public void exerciseTwo() {
-        MainPage mainPage = new MainPage(webDriver);
-        DifferentElementsPage differentElementsPage = new DifferentElementsPage(webDriver);
+    @Parameters({"title", "userName", "yellow", "windLogTrue", "waterLogTrue",
+        "selenLogTrue", "yellowLogTrue"})
+    public void exerciseTwo(String title, String userName, String yellow, String windLogTrue,
+                            String waterLogTrue, String selenLogTrue, String yellowLogTrue) {
 
         //1. Open test site by URL
-        mainPage.openPage();
+        webDriver.get("https://jdi-testing.github.io/jdi-light/index.html");
 
         //2. Assert Brower title
-        assertS.assertEquals(mainPage.getTitle(), TestData.HOME_PAGE_TITLE);
+        assertS.assertEquals(mainPage.getTitle(), title);
 
         //3. Perform login
-        mainPage.login(TestData.LOGIN, TestData.PASSWORD);
+        mainPage.login(user.getLogin(), user.getPassword());
 
         // 4. Assert User name in the right-top side of screen that user is logged in
-        assertS.assertEquals(mainPage.loggedUser(), TestData.EXPECTED_USER_NAME);
+        assertS.assertEquals(mainPage.loggedUser(), userName);
 
         //5. Open through the header menu Service -> Different Elements Page
         mainPage.headerMenuItem(2).click();
@@ -39,25 +38,25 @@ public class TestExercise2 extends BaseTest {
         assertS.assertTrue(differentElementsPage.getRadioButton(3).isSelected());
 
         //8. Select in dropdown
-        differentElementsPage.colorDropDown(TestData.YELLOW);
+        differentElementsPage.colorDropDown(yellow);
 
         //9. Assert that
         // for each checkbox there is an individual log row
         // and value is corresponded to the status of checkbox.
         assertS.assertTrue(differentElementsPage
-                .searchLog(TestData.WIND_CHBOX_TO_TRUE).isDisplayed());
+                .searchLog(windLogTrue).isDisplayed());
         assertS.assertTrue(differentElementsPage
-                .searchLog(TestData.WATER_CHBOX_TO_TRUE).isDisplayed());
+                .searchLog(waterLogTrue).isDisplayed());
 
         // Assert that for radiobutton there is a log row
         // and value is corresponded to the status of radiobutton.
         assertS.assertTrue(differentElementsPage
-                .searchLog(TestData.METAL_RADIO_TO_SELEN).isDisplayed());
+                .searchLog(selenLogTrue).isDisplayed());
 
         // Assert that for dropdown there is a log row
         // and value is corresponded to the selected value.
         assertS.assertTrue(differentElementsPage
-                .searchLog(TestData.COLORS_MENU_TO_YELLOW).isDisplayed());
+                .searchLog(yellowLogTrue).isDisplayed());
 
         //10. Close Browser *DEPRECATED* managed by BaseTest class
         assertS.assertAll();

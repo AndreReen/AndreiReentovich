@@ -45,12 +45,6 @@ public class MainPage {
     public MainPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
-        waitActions = new WaitActions(webDriver);
-    }
-
-
-    public void openPage() {
-        webDriver.get("https://jdi-testing.github.io/jdi-light/index.html");
     }
 
     public String getTitle() {
@@ -89,7 +83,7 @@ public class MainPage {
     }
 
     public String textGet(int textNum) {
-        return texts.get(textNum).getText();
+        return texts.get(textNum).getText().replace("\n", " ");
     }
 
     public WebElement frameItem() {

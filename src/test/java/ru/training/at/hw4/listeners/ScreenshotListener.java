@@ -13,11 +13,11 @@ public class ScreenshotListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("Test failed. Taking a screenshot.");
-
         WebDriver driver = DriverManager.driver;
-        if (driver != null) {
+
+        try {
             attachScreenShot(driver);
-        } else {
+        } catch (NullPointerException e) {
             System.out.println("Driver not found");
         }
     }

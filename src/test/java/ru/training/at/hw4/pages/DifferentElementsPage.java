@@ -9,9 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class DifferentElementsPage {
-
-    private WebDriver webDriver;
+public class DifferentElementsPage extends CommonPage {
 
     @FindBy(css = ".label-checkbox > input")
     private List<WebElement> checkBoxes;
@@ -23,17 +21,11 @@ public class DifferentElementsPage {
     private List<WebElement> log;
 
     public DifferentElementsPage(WebDriver webDriver) {
+        super(webDriver);
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
     }
 
-    public void openPage() {
-        webDriver.get("https://jdi-testing.github.io/jdi-light/different-elements.html");
-    }
-
-    public String getTitle() {
-        return  webDriver.getTitle();
-    }
 
     public WebElement getCheckBox(int checkBoxNumber) {
         return checkBoxes.get(checkBoxNumber);
