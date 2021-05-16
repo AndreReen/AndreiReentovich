@@ -2,45 +2,34 @@ package ru.training.at.hw4.potest;
 
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import ru.training.at.hw4.driverutils.DriverManager;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
+import ru.training.at.hw4.entity.User;
+import ru.training.at.hw4.pages.CommonPage;
+import ru.training.at.hw4.pages.DifferentElementsPage;
+import ru.training.at.hw4.pages.MainPage;
 
 public class BaseTest {
 
     public WebDriver webDriver;
     public SoftAssert assertS;
-    public String login = "";
-    public String password = "";
+    public MainPage mainPage;
+    public DifferentElementsPage differentElementsPage;
+    public CommonPage commonPage;
+    public User user;
+
 
     @BeforeClass
     public void prepareToTest() {
         webDriver = DriverManager.setupDriver();
-        System.out.println(webDriver);
         webDriver.manage().window().maximize();
-        webDriver.manage().deleteAllCookies();
         assertS = new SoftAssert();
 
-        // loading credetials from properties file
-        String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-        String testDataPath = rootPath + "testData.properties";
-
-        Properties testProps = new Properties();
-        try {
-            testProps.load(new FileInputStream(testDataPath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        login = testProps.getProperty("login");
-        password = testProps.getProperty("password");
+//        commonPage = new CommonPage(webDriver);
+//        mainPage = new MainPage(webDriver);
+//        differentElementsPage = new DifferentElementsPage(webDriver);
+        user = new User();
     }
 
     @AfterClass

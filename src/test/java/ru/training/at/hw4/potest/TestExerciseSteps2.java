@@ -2,10 +2,10 @@ package ru.training.at.hw4.potest;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import ru.training.at.hw4.pages.DifferentElementsPage;
-import ru.training.at.hw4.pages.MainPage;
-import ru.training.at.hw4.steps.Steps;
+import ru.training.at.hw4.steps.DifferentElementsSteps;
+import ru.training.at.hw4.steps.MainPageSteps;
 import ru.training.at.hw4.testdata.TestData;
 
 @Feature("Implementing Exercise2")
@@ -13,17 +13,21 @@ import ru.training.at.hw4.testdata.TestData;
 public class TestExerciseSteps2 extends BaseTest {
 
     @Test
-    public void exerciseTwo() {
-        Steps steps = new Steps(webDriver);
+    @Parameters({"title", "userName", "yellow", "windLogTrue", "waterLogTrue",
+            "selenLogTrue", "yellowLogTrue"})
+    public void exerciseTwo(String title, String userName, String yellow, String windLogTrue,
+                            String waterLogTrue, String selenLogTrue, String yellowLogTrue) {
+
+        DifferentElementsSteps steps = new DifferentElementsSteps(webDriver);
 
         //1. Open test site by URL
         steps.openPage();
         //2. Assert Brower title
-        steps.assertTitle(TestData.HOME_PAGE_TITLE );
+        steps.assertTitle(title);
         //3. Perform login
-        steps.loggingIn();
+        steps.loggingIn(user.getLogin(), user.getPassword());
         // 4. Assert User name in the right-top side of screen that user is logged in
-        steps.assertUserName(TestData.EXPECTED_USER_NAME);
+        steps.assertUserName(userName);
         //5. Open through the header menu Service -> Different Elements Page
         steps.goToDifElem();
         //6. Select checkboxes
@@ -32,18 +36,17 @@ public class TestExerciseSteps2 extends BaseTest {
         //7. Select radio
         steps.selectRadioButton(3);
         //8. Select in dropdown
-        steps.selectDropdown(TestData.YELLOW);
+        steps.selectDropdown(yellow);
         //9. Assert that
         // for each checkbox there is an individual log row
         // and value is corresponded to the status of checkbox.
-        steps.checkLog(TestData.WIND_CHBOX_TO_TRUE);
-        steps.checkLog(TestData.WATER_CHBOX_TO_TRUE);
-        steps.checkLog(TestData.COLORS_MENU_TO_YELLOW);
+        steps.checkLog(windLogTrue);
+        steps.checkLog(waterLogTrue);
         // Assert that for radiobutton there is a log row
         // and value is corresponded to the status of radiobutton.
-        steps.checkLog(TestData.METAL_RADIO_TO_SELEN);
+        steps.checkLog(selenLogTrue);
         // Assert that for dropdown there is a log row
         // and value is corresponded to the selected value.
-        steps.checkLog(TestData.METAL_RADIO_TO_SELEN);
+        steps.checkLog(yellowLogTrue);
     }
 }
