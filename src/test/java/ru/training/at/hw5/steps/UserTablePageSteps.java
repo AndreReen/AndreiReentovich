@@ -26,9 +26,9 @@ public class UserTablePageSteps {
                 .searchLog(TestData.VIP_TO_TRUE).isDisplayed());
     }
 
-    @Then("User Table page should be opened")
-    public void assertUserTableOpen() {
-        Assert.assertEquals(DriverManager.driver.getTitle(), TestData.USER_TABLE);
+    @Then("{string} page should be opened")
+    public void assertUserTableOpen(String title) {
+        Assert.assertEquals(DriverManager.driver.getTitle(), title);
     }
 
     @And("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
