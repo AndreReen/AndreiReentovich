@@ -30,10 +30,6 @@ public class DifferentElementsPageJdi {
         waitActions = new WaitActions(webDriver);
     }
 
-    public void openPage() {
-        webDriver.get("https://jdi-testing.github.io/jdi-light/different-elements.html");
-    }
-
     public String getTitle() {
         return  webDriver.getTitle();
     }

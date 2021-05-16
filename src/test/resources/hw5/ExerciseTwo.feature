@@ -5,7 +5,7 @@ Feature: BDD style testing
     And I login as user Roman Iovlev
     When I click on Service button in Header
     And I click on User Table button in Service dropdown
-    Then User Table page should be opened
+    Then "User Table" page should be opened
     And 6 Number Type Dropdowns should be displayed on Users Table on User Table Page
     And 6 Usernames should be displayed on Users Table on User Table Page
     And 6 Description texts should be displayed on Users Table on User Table Page

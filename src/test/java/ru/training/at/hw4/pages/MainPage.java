@@ -8,23 +8,8 @@ import ru.training.at.hw4.driverutils.WaitActions;
 
 import java.util.List;
 
-public class MainPage {
+public class MainPage extends CommonPage {
 
-    private WebDriver webDriver;
-    private WaitActions waitActions;
-
-    @FindBy(id = "user-icon")
-    private WebElement userLogin;
-    @FindBy(id = "name")
-    private WebElement name;
-    @FindBy(id = "password")
-    private WebElement password;
-    @FindBy(id = "login-button")
-    private WebElement loginButton;
-    @FindBy(id = "user-name")
-    private WebElement userName;
-    @FindBy(css = ".uui-navigation.nav > li")
-    private List<WebElement> header;
     @FindBy(css = ".icons-benefit")
     private List<WebElement> images;
     @FindBy(css = ".benefit-txt")
@@ -37,46 +22,11 @@ public class MainPage {
     private WebElement leftNavMenu;
     @FindBy(css = ".sidebar-menu.left > li")
     private List<WebElement> leftNavMenuItem;
-    @FindBy(linkText = "DIFFERENT ELEMENTS")
-    private WebElement differentElementsItem;
-
-
 
     public MainPage(WebDriver webDriver) {
+        super(webDriver);
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
-        waitActions = new WaitActions(webDriver);
-    }
-
-    public void openPage() {
-        webDriver.get("https://jdi-testing.github.io/jdi-light/index.html");
-    }
-
-    public String getTitle() {
-        return  webDriver.getTitle();
-    }
-
-    public void login(String loginP, String passwordP) {
-        userLogin.click();
-        name.sendKeys(loginP);
-        password.sendKeys(passwordP);
-        loginButton.click();
-    }
-
-    public String loggedUser() {
-        return userName.getText();
-    }
-
-    public int headerMenuSize() {
-        return header.size();
-    }
-
-    public String headerMenuItemText(int itemNumber) {
-        return header.get(itemNumber).getText();
-    }
-
-    public WebElement headerMenuItem(int itemNumber) {
-        return header.get(itemNumber);
     }
 
     public int imageCount() {
@@ -88,7 +38,7 @@ public class MainPage {
     }
 
     public String textGet(int textNum) {
-        return texts.get(textNum).getText();
+        return texts.get(textNum).getText().replace("\n", " ");
     }
 
     public WebElement frameItem() {
@@ -107,7 +57,4 @@ public class MainPage {
         return leftNavMenuItem.get(itemNumber).getText();
     }
 
-    public WebElement getDifferentElementsMenuItem() {
-        return differentElementsItem;
-    }
 }

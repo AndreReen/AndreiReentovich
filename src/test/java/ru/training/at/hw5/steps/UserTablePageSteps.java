@@ -4,12 +4,9 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import ru.training.at.hw5.driverutils.DriverManager;
 import ru.training.at.hw5.pages.UserTablePage;
-import ru.training.at.hw5.testdata.TestData;
-
 import java.util.List;
 import java.util.Map;
 
@@ -20,15 +17,15 @@ public class UserTablePageSteps {
         new UserTablePage(DriverManager.driver).getVipCheckboxIvan().click();
     }
 
-    @Then("I log row has 'Vip: condition changed to true text' in log section")
-    public void checkLogVipTrue() {
+    @Then("I log row has {string} text in log section")
+    public void checkLogVipTrue(String log) {
         Assert.assertTrue(new UserTablePage(DriverManager.driver)
-                .searchLog(TestData.VIP_TO_TRUE).isDisplayed());
+                .searchLog(log).isDisplayed());
     }
 
-    @Then("User Table page should be opened")
-    public void assertUserTableOpen() {
-        Assert.assertEquals(DriverManager.driver.getTitle(), TestData.USER_TABLE);
+    @Then("{string} page should be opened")
+    public void assertUserTableOpen(String title) {
+        Assert.assertEquals(DriverManager.driver.getTitle(), title);
     }
 
     @And("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
