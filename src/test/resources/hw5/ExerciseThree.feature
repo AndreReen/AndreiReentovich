@@ -6,4 +6,4 @@ Feature: BDD style testing
     And I click on Service button in Header
     And I click on User Table button in Service dropdown
     When I select 'vip' checkbox for Sergey Ivan
-    Then I log row has 'Vip: condition changed to true text' in log section
+    Then I log row has "Vip: condition changed to true" text in log section

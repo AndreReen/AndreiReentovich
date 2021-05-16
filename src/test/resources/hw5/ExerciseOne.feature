@@ -8,10 +8,8 @@ Feature: BDD style testing
     When I select checkbox Water
     And select checkbox Wind
     And  select radio button Selen
-    And  select color Yellow from dropdown menu
-    Then Log entry correspondent to checkbox Water is displayed
-    And Log entry correspondent to checkbox Wind is displayed
-    And Log entry correspondent to radio button Selen is displayed
-    And Log entry correspondent color Yellow is displayed
-
-
+    And  select color "Yellow" from dropdown menu
+    Then Log entry correspondent to checkbox Water is displayed "Water: condition changed to true"
+    And Log entry correspondent to checkbox Wind is displayed "Wind: condition changed to true"
+    And Log entry correspondent to radio button Selen is displayed "metal: value changed to  Selen"
+    And Log entry correspondent color Yellow is displayed "Colors: value changed to Yellow"
