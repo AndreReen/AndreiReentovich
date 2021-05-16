@@ -29,11 +29,6 @@ public class DifferentElementsPage {
         PageFactory.initElements(webDriver, this);
     }
 
-
-    public void openPage() {
-        webDriver.get("https://jdi-testing.github.io/jdi-light/different-elements.html");
-    }
-
     public String getTitle() {
         return  webDriver.getTitle();
     }
