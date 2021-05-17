@@ -21,7 +21,7 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsForm> {
     @UI("#elements-checklist input[type=checkbox]")
     public Checklist elements;
 
-    @JDropdown(root = "div[ui=dropdown]",
+    @JDropdown(root = "#colors",
             value = ".filter-option",
             list = "li",
             expand = ".caret")
