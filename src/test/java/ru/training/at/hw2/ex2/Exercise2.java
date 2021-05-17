@@ -13,7 +13,7 @@ import java.util.List;
 public class Exercise2 {
 
     @Test
-    public void exerciseTest() {
+    public void exerciseTestTwo() {
         WebDriver webDriver;
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         webDriver = new ChromeDriver();
@@ -42,6 +42,8 @@ public class Exercise2 {
         assertS.assertEquals(actualUser, expectedUser);
 
         //5. Open through the header menu Service -> Different Elements Page
+        List<WebElement> headerMenu = webDriver.findElements(By.cssSelector("ul.uui-navigation.nav.navbar-nav.m-l8 > li"));
+        headerMenu.get(2).click();
         webElement = webDriver.findElement(By.linkText("DIFFERENT ELEMENTS"));
         webElement.click();
 
@@ -54,7 +56,7 @@ public class Exercise2 {
         List<WebElement> dropDown = webDriver.findElements(By.xpath("//select"));
         assertS.assertEquals(dropDown.size(), 1);
         List<WebElement> buttons = webDriver.findElements(By.xpath("//input[@type='button']"));
-        assertS.assertEquals(buttons.size(), 2);
+        assertS.assertEquals(buttons.size(), 1);
 
         //6. Select checkboxes
         checkBoxes.get(0).click();
