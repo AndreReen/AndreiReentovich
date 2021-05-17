@@ -1,0 +1,54 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="allTestsSuite" thread-count="1">
+<listeners>
+    <listener class-name="ru.training.at.hw4.listeners.ScreenshotListener"></listener>
+</listeners>
+<parameter name="title" value="Home Page"></parameter>
+<parameter name="userName" value="ROMAN IOVLEV"></parameter>
+<parameter name="headerItem1" value="HOME"></parameter>
+<parameter name="headerItem2" value="CONTACT FORM"></parameter>
+<parameter name="headerItem3" value="SERVICE"></parameter>
+<parameter name="headerItem4" value="METALS &amp; COLORS"></parameter>
+
+<test name="Exercise1">
+    <parameter name="benefit1" value="To include good practices and ideas from successful EPAM project"></parameter>
+    <parameter name="benefit2" value="To be flexible and customizable"></parameter>
+    <parameter name="benefit3" value="To be multiplatform"></parameter>
+    <parameter name="benefit4" value="Already have good base (about 20 internal and some external projects), wish to get more…"></parameter>
+    <parameter name="headerSize" value="4"></parameter>
+    <parameter name="imageCount" value="4"></parameter>
+    <parameter name="textCount" value="4"></parameter>
+    <parameter name="menuSize" value="5"></parameter>
+    <parameter name="leftMenuItem1" value="Home"></parameter>
+    <parameter name="leftMenuItem2" value="Contact form"></parameter>
+    <parameter name="leftMenuItem3" value="Service"></parameter>
+    <parameter name="leftMenuItem4" value="Metals &amp; Colors"></parameter>
+    <parameter name="leftMenuItem5" value="Elements packs"></parameter>
+
+    <classes>
+        <class name="ru.training.at.hw4.potest.TestExerciseSteps1"/>
+    </classes>
+</test>
+
+<test name="Exercise2">
+    <parameter name="yellow" value="Yellow"></parameter>
+    <parameter name="windLogTrue" value="Wind: condition changed to true"></parameter>
+    <parameter name="waterLogTrue" value="Water: condition changed to true"></parameter>
+    <parameter name="selenLogTrue" value="metal: value changed to  Selen"></parameter>
+    <parameter name="yellowLogTrue" value="Colors: value changed to Yellow"></parameter>
+    <classes>
+        <class name="ru.training.at.hw4.potest.TestExerciseSteps2"/>
+    </classes>
+</test>
+
+    <test name="ExerciseFAIL">
+        <parameter name="wrongTitle" value="FAIL HERE"></parameter>
+
+        <classes>
+            <class name="ru.training.at.hw4.potest.TestFail"/>
+        </classes>
+    </test>
+
+
+
+</suite>

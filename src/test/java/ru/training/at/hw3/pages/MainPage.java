@@ -45,7 +45,6 @@ public class MainPage {
     public MainPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
-        waitActions = new WaitActions(webDriver);
     }
 
     public String getTitle() {
