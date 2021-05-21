@@ -27,4 +27,3 @@ public class ScreenshotListener implements ITestListener {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }
-
