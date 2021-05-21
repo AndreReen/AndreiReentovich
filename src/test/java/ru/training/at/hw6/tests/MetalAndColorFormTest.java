@@ -12,12 +12,12 @@ import static ru.training.at.hw6.pages.JdiSite.*;
 public class MetalAndColorFormTest implements TestsInit {
 
     @Test(dataProviderClass = DataProviderForMetalAndColorForm.class, dataProvider = "dataFromFile")
-    public void metalsColorsFormFillTest(MetalsAndColors data) {
+    public void metalsColorsFormFillTest(MetalsAndColors testData) {
         Actions.openHomePage();
         Actions.login(new User());
         Actions.selectHeaderItem(HeaderMenuItems.METALS_COLORS);
-        Actions.fillForm(metalAndColorForm, data);
-        Actions.verifyResults(MetalsAndColors.resultsList(data));
+        Actions.fillForm(metalAndColorForm, testData);
+        Actions.verifyResults(MetalsAndColors.resultsList(testData));
         Actions.logout();
     }
 }
