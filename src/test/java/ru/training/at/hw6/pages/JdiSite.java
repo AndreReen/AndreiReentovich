@@ -1,4 +1,4 @@
-package ru.training.at.hw6.PageObjects;
+package ru.training.at.hw6.pages;
 
 import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.Menu;
@@ -13,9 +13,9 @@ import ru.training.at.hw6.forms.MetalsAndColorsForm;
 @JSite("https://jdi-testing.github.io/jdi-light/")
 public class JdiSite {
     public static HomePage homePage;
-    public static MetalsAndColorsPage macPage;
+    public static MetalsAndColorsPage metalAndColorPage;
 
-    @UI(".form") public static MetalsAndColorsForm macForm;
+    @UI(".form") public static MetalsAndColorsForm metalAndColorForm;
     @Css("form") public static LoginForm loginForm;
     @Css("img#user-icon") public static Icon userIcon;
     @UI(".uui-navigation.nav li") public static Menu headerMenu;

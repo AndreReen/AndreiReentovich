@@ -8,9 +8,9 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
-import ru.training.at.hw6.entities.TestValues;
+import ru.training.at.hw6.entities.MetalsAndColors;
 
-public class MetalsAndColorsForm extends Form<MetalsAndColorsForm> {
+public class MetalsAndColorsForm extends Form<MetalsAndColors> {
 
     @UI("[name =custom_radio_odd]")
     public RadioButtons summaryOdd;
@@ -40,13 +40,10 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsForm> {
     public Dropdown vegetables;
 
     @UI("#submit-button")
-    public Button submitButton;
+    public static Button submitButton;
 
-    public void submin() {
-        submitButton.click();
-    }
-
-    public void fillForm(TestValues data) {
+    @Override
+    public void submit(MetalsAndColors data) {
         summaryOdd.select(data.getSummary()[0]);
         summaryEven.select(data.getSummary()[1]);
         elements.select(data.getElements());
@@ -55,5 +52,6 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsForm> {
         vegetables.expand();
         vegetables.select(3);
         vegetables.select(data.getVegetables());
+        submitButton.click();
     }
 }

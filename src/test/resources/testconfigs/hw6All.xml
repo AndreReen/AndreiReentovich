@@ -2,7 +2,7 @@
 <suite name="Cucumber Tests">
     <test name="Cucumber Example">
         <classes>
-            <class name="ru.training.at.hw6.tests.TheTest"/>
+            <class name="ru.training.at.hw6.tests.MetalAndColorFormTest"/>
         </classes>
     </test>
 </suite>
