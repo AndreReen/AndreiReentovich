@@ -15,10 +15,16 @@ public class JdiSite {
     public static HomePage homePage;
     public static MetalsAndColorsPage metalAndColorPage;
 
-    @UI(".form") public static MetalsAndColorsForm metalAndColorForm;
-    @Css("form") public static LoginForm loginForm;
-    @Css("img#user-icon") public static Icon userIcon;
-    @UI(".uui-navigation.nav li") public static Menu headerMenu;
-    @Css(".profile-photo [ui=label]") public static UIElement userName;
-    @Css(".logout") public static WebElement logout;
+    @UI(".form")
+    public static MetalsAndColorsForm metalAndColorForm;
+    @Css("form")
+    public static LoginForm loginForm;
+    @Css("img#user-icon")
+    public static Icon userIcon;
+    @UI(".uui-navigation.nav li")
+    public static Menu headerMenu;
+    @Css(".profile-photo [ui=label]")
+    public static UIElement userName;
+    @Css(".logout")
+    public static WebElement logout;
 }

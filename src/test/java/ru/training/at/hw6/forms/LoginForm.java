@@ -7,7 +7,10 @@ import com.epam.jdi.light.ui.html.elements.common.TextField;
 import ru.training.at.hw6.entities.User;
 
 public class LoginForm extends Form<User> {
-    @UI("#name") TextField name;
-    @UI("#password") TextField password;
-    @UI("#login-button") Button loginButton;
+    @UI("#name")
+    TextField name;
+    @UI("#password")
+    TextField password;
+    @UI("#login-button")
+    Button loginButton;
 }
