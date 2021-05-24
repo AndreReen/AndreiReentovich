@@ -8,8 +8,7 @@ import ru.training.at.hw5.driverutils.DriverManager;
 import ru.training.at.hw5.pages.DifferentElementsPageJdi;
 
 public class DifferentElementsPageSteps {
-
-
+    
     @When("I select checkbox Water")
     public void selectWaterCheckBox() {
         new DifferentElementsPageJdi(DriverManager.driver).getCheckBox(0).click();

@@ -5,8 +5,7 @@ import io.qameta.allure.Story;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import ru.training.at.hw4.steps.DifferentElementsSteps;
-import ru.training.at.hw4.steps.MainPageSteps;
-import ru.training.at.hw4.testdata.TestData;
+
 
 @Feature("Implementing Exercise2")
 @Story("testing DifferentElementsPage elements")
